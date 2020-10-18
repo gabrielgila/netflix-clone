@@ -23,4 +23,4 @@ export const SubTitle = styled.h2``;
 
 export const Image = styled.image``;
 
-export const Container = styled.div``
+export const Container = styled.div``;
