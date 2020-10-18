@@ -1,10 +1,10 @@
 import React from "react";
 import { Container, Inner } from './styles/jumbotron';
 
-export default function Jumbotron({ direction ='row', ...restProps }) {
+export default function Jumbotron({ children, direction = 'row', ...restProps }) {
     return (
         <Inner direction={direction}>
-            <p>Hello Again!</p>
+            {children}
         </Inner>
     )
 }
