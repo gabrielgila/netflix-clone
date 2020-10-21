@@ -1,4 +1,6 @@
-import React, { userState } from "react";
+import React, { userState, userContext, createContext } from "react";
+
+const ToogleContext = createContext();
 
 export default function Accordion({children, ...restProps}) {
     return(
@@ -18,10 +20,15 @@ Accordion.Frame = function AccordionFrame({children, ...restProops }) {
 
 Accordion.Item = function AccordionItem({children, ...restProops }) {
     const [toogleShow, setToogleShow] = userState(false);
-    return <Item { ...restProps }>{children}</Item>;
+    return(
+        <ToogleContext.Provider value={{ toogleShow, setToogleShow}}>
+            <Item { ...restProps }>{children}</ToogleContext.ProviderItem>;
+        </ToogleContext.Provider>
+    );
 };
 
 Accordion.Header = function AccordionHeader({children, ...restProops }) {
-    const [toogleShow, setToogleShow] = userState(false);
-    return <Header { ...restProps }>{children}</Header>;
+    return <Header onClick={() => setToogle()} { ...restProps }>
+        {children}
+    </Header>;
 };
